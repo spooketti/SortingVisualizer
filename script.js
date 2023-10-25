@@ -5,6 +5,7 @@ let barRatioHeight
 let barRatioWidth
 let chosenAlg = ""
 let finished = true;
+let began = false
 
 function createData(siz)
 {
@@ -107,6 +108,7 @@ function selectionSort()
     // One by one move boundary of unsorted subarray
     let i=0;
     let sorter = setInterval(() => {
+        oscillator.disconnect();
         let min_idx = i;
         redBar.style.backgroundColor = "white"
         for (let j = i + 1; j < arr.length; j++)
@@ -124,6 +126,7 @@ function selectionSort()
                     redBar.style.backgroundColor = "white"
                     b.style.backgroundColor = "red"
                     redBar = b
+                    playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-5000)
                     
         let temp = arr[min_idx];
         arr[min_idx] = arr[i];
@@ -135,13 +138,27 @@ function selectionSort()
             let i=0;
             let finishInterval = setInterval(() => {
                 //console.log(i)
-                document.getElementById(arr[i].toString()).style.backgroundColor = "lime"
-                i++
-                if(i>=arr.length)
+                try
+                {
+                    document.getElementById(arr[i].toString()).style.backgroundColor = "lime"
+                    i++
+                    playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-5000)
+                    if(i>=arr.length)
+                    {
+                        clearInterval(finishInterval)
+                        oscillator.disconnect();
+                        //oscillator.stop()
+                        finished = true
+                    }
+                }
+                catch(err)
                 {
                     clearInterval(finishInterval)
-                    finished = true
+                        finished = true
+                        oscillator.disconnect();
+                       // oscillator.stop()
                 }
+                
             }, 1);
         }
         i++
@@ -222,6 +239,12 @@ function beginSort()
     vis = false
     data_panel.style.transform = `translateX(200%)`
     finished = false
+    if(began==false)
+    {
+        oscillator.start();
+    }
+    began = true
+    
     switch(chosenAlg)
     {
         case "Bubble":
@@ -235,3 +258,17 @@ function beginSort()
     
 
 }
+
+let audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+let oscillator = audioCtx.createOscillator();
+
+oscillator.type = 'triangle';
+
+function playNote(frequency) {
+oscillator.frequency.value = frequency; // value in hertz
+oscillator.connect(audioCtx.destination);
+
+}
+oscillator.disconnect();
+
+
