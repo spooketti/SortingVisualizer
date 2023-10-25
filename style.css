@@ -19,12 +19,18 @@ html,body
 
 #data-panel
 {
+    padding: 1%;
     position:fixed;
     top:0;
     right:0;
     width:20%;
     height:100%;
-    background-color: green;
+    background: linear-gradient(3deg, #878787, #353232);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 50s ease infinite;
+    -moz-animation: AnimationName 50s ease infinite;
+    animation: AnimationName 50s ease infinite;
     transform: translateX(100%);
     transition: all .5s;
 }
@@ -32,4 +38,93 @@ html,body
 .bar
 {
     background-color: white;
+}
+
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+}
+
+#numDat
+{
+    margin-bottom:3%;
+}
+
+#ChosenAlg
+{
+    margin-top: 100%;
+    background-color: white;
+    user-select: none;
+}
+
+#sortButton
+{
+    background-color: #04AA6D;
+    border:none;
+    width:100%;
+}
+
+#initial
+{
+    color:white;
+    font-size: xx-large;
+}
+
+#initWrap
+{
+    position: relative;
+    left:0;
+    top:0;
+    height: 100%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

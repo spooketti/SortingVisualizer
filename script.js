@@ -3,9 +3,12 @@ let low
 let high 
 let barRatioHeight
 let barRatioWidth
+let chosenAlg = ""
+let finished = true;
 
 function createData(siz)
 {
+    data_graph.innerHTML = ""
     arr = []
     for(let i=1;i<=siz;i++)
     {
@@ -31,6 +34,7 @@ function createData(siz)
 }
 let data_graph = document.getElementById("data-graph")
 let data_panel = document.getElementById("data-panel")
+let redBar = document.getElementById("tempbar")
 
 
 function shuffle(array) {
@@ -56,6 +60,7 @@ function bubbleSort()
     let isSorted = false;
     let sorter = setInterval(() =>
     {
+        redBar.style.backgroundColor = "white"
        // console.log("h")
         isSorted = true
         for(let i=0;i<arr.length;i++)
@@ -68,6 +73,9 @@ function bubbleSort()
                     b.style.height = `${barRatioHeight * arr[i]}%`
                     a.id = arr[i+1]
                     b.id = arr[i]
+                    redBar.style.backgroundColor = "white"
+                    b.style.backgroundColor = "red"
+                    redBar = b
                 isSorted = false;
                 let buffer = arr[i]
                 arr[i] = arr[i+1]
@@ -85,6 +93,7 @@ function bubbleSort()
                 if(i>=arr.length)
                 {
                     clearInterval(finishInterval)
+                    finished = true
                 }
             }, 1);
         }
@@ -99,6 +108,7 @@ function selectionSort()
     let i=0;
     let sorter = setInterval(() => {
         let min_idx = i;
+        redBar.style.backgroundColor = "white"
         for (let j = i + 1; j < arr.length; j++)
         if (arr[j] < arr[min_idx])
             min_idx = j;
@@ -111,6 +121,10 @@ function selectionSort()
                     b.style.height = `${barRatioHeight * arr[i]}%`
                     a.id = arr[min_idx]
                     b.id = arr[i]
+                    redBar.style.backgroundColor = "white"
+                    b.style.backgroundColor = "red"
+                    redBar = b
+                    
         let temp = arr[min_idx];
         arr[min_idx] = arr[i];
         arr[i] = temp;
@@ -126,10 +140,12 @@ function selectionSort()
                 if(i>=arr.length)
                 {
                     clearInterval(finishInterval)
+                    finished = true
                 }
             }, 1);
         }
         i++
+        
         
 },5)
 }
@@ -176,10 +192,41 @@ visDict = {true:0,false:100}
 let vis = false
 document.addEventListener("keydown",function(e)
 {
-    if(e.key == "Tab")
+    if(e.key == "Tab" && finished)
     {
         e.preventDefault()
         vis = !vis
         data_panel.style.transform = `translateX(${visDict[vis]}%)`
     }
 })
+
+function setAlg(alg)
+{
+    
+    chosenAlg = alg
+    document.getElementById("ChosenAlg").innerText = chosenAlg
+    createData(document.getElementById("numDat").value)
+}
+
+function beginSort()
+{
+    if(chosenAlg == "")
+    {
+        return
+    }
+    vis = false
+    data_panel.style.transform = `translateX(200%)`
+    finished = false
+    switch(chosenAlg)
+    {
+        case "Bubble":
+        bubbleSort()
+        break;
+
+        case "Selection":
+        selectionSort()
+        break;
+    }
+    
+
+}

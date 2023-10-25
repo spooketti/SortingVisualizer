@@ -4,62 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
+    <title>Sorting Algorithms</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <div id="tempbar"></div>
     <div id="data-graph">
-
+      <div id="initWrap">
+        <div id="initial">Press Tab to Activate the Graph!</div>
+      </div>
+      
+      
     </div>
     <div id="data-panel">
-        <input type="search" placeholder="Data-Size e.g. 100">
-
-<style>
-.dropbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #ddd;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-</style>
+        <input type="number" id="numDat" placeholder="Data-Size e.g. 100">
+        <br>
 
 <div class="dropdown">
   <button class="dropbtn">Sorting Algorithm</button>
-  <div class="dropdown-content">a
-    <a href="#">Bubble</a>
-    <a href="#">im lazy</a>
-    <a href="#">very lazy</a>
+  <div class="dropdown-content">
+    <a onclick="setAlg('Bubble')">Bubble</a>
+    <a onclick="setAlg('Selection')">Selection</a>
   </div>
 </div>
-
+<div id="ChosenAlg">Select An Algorithm</div>
+<button id="sortButton" onclick="beginSort()">Sort!</button>
     </div>
 	<script src="script.js"></script>
   </body>
