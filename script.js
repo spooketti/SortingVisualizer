@@ -204,6 +204,11 @@ function setAlg(alg)
 {
     
     chosenAlg = alg
+    if(document.getElementById("numDat").value <= 1)
+    {
+        return
+    }
+
     document.getElementById("ChosenAlg").innerText = chosenAlg
     createData(document.getElementById("numDat").value)
 }
