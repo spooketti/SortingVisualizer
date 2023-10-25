@@ -92,7 +92,85 @@ function bubbleSort()
     
 }
 
+function selectionSort()
+{
+ 
+    // One by one move boundary of unsorted subarray
+    let i=0;
+    let sorter = setInterval(() => {
+        let min_idx = i;
+        for (let j = i + 1; j < arr.length; j++)
+        if (arr[j] < arr[min_idx])
+            min_idx = j;
+ 
+        // Swap the found minimum element with the first element
+        //swap(arr,min_idx, i);
+        let a =  document.getElementById(arr[i])
+                    let b = document.getElementById(arr[min_idx])
+                    a.style.height = `${barRatioHeight * arr[min_idx]}%`
+                    b.style.height = `${barRatioHeight * arr[i]}%`
+                    a.id = arr[min_idx]
+                    b.id = arr[i]
+        let temp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = temp;
 
+        if(i>=arr.length-1)
+        {
+            clearInterval(sorter)
+            let i=0;
+            let finishInterval = setInterval(() => {
+                //console.log(i)
+                document.getElementById(arr[i].toString()).style.backgroundColor = "lime"
+                i++
+                if(i>=arr.length)
+                {
+                    clearInterval(finishInterval)
+                }
+            }, 1);
+        }
+        i++
+        
+},5)
+}
+/*
+let min_idx = i;
+         for (let j = i + 1; j < arr.length; j++)
+         if (arr[j] < arr[min_idx])
+             min_idx = j;
+  
+         // Swap the found minimum element with the first element
+         //swap(arr,min_idx, i);
+         let a =  document.getElementById(arr[i])
+                     let b = document.getElementById(arr[min_idx])
+                     a.style.height = `${barRatioHeight * arr[min_idx]}%`
+                     b.style.height = `${barRatioHeight * arr[i]}%`
+                     a.id = arr[min_idx]
+                     b.id = arr[i]
+         let temp = arr[min_idx];
+         arr[min_idx] = arr[i];
+         arr[i] = temp;
+    for (let i = 0; i < arr.length-1; i++)
+    {
+        // Find the minimum element in unsorted array
+        let min_idx = i;
+        for (let j = i + 1; j < arr.length; j++)
+        if (arr[j] < arr[min_idx])
+            min_idx = j;
+ 
+        // Swap the found minimum element with the first element
+        //swap(arr,min_idx, i);
+        let a =  document.getElementById(arr[i])
+                    let b = document.getElementById(arr[min_idx])
+                    a.style.height = `${barRatioHeight * arr[min_idx]}%`
+                    b.style.height = `${barRatioHeight * arr[i]}%`
+                    a.id = arr[min_idx]
+                    b.id = arr[i]
+        let temp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = temp;
+    }
+*/
 
 visDict = {true:0,false:100}
 let vis = false
