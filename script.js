@@ -77,23 +77,28 @@ function bubbleSort()
                     redBar.style.backgroundColor = "white"
                     b.style.backgroundColor = "red"
                     redBar = b
+                    playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-10000)
                 isSorted = false;
                 let buffer = arr[i]
                 arr[i] = arr[i+1]
                 arr[i+1] = buffer
+                
             }
         }
         if(isSorted)
         {
+            //oscillator.disconnect();
             clearInterval(sorter)
             let i=0;
             let finishInterval = setInterval(() => {
                 //console.log(i)
+                playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-10000)
                 document.getElementById(arr[i].toString()).style.backgroundColor = "lime"
                 i++
                 if(i>=arr.length)
                 {
                     clearInterval(finishInterval)
+                    oscillator.disconnect();
                     finished = true
                 }
             }, 1);
@@ -126,7 +131,7 @@ function selectionSort()
                     redBar.style.backgroundColor = "white"
                     b.style.backgroundColor = "red"
                     redBar = b
-                    playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-5000)
+                    playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-10000)
                     
         let temp = arr[min_idx];
         arr[min_idx] = arr[i];
@@ -134,15 +139,17 @@ function selectionSort()
 
         if(i>=arr.length-1)
         {
+            oscillator.disconnect();
             clearInterval(sorter)
             let i=0;
+            //oscillator.connect()
             let finishInterval = setInterval(() => {
                 //console.log(i)
                 try
                 {
                     document.getElementById(arr[i].toString()).style.backgroundColor = "lime"
                     i++
-                    playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-5000)
+                    playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-10000)
                     if(i>=arr.length)
                     {
                         clearInterval(finishInterval)
