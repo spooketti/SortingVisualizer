@@ -77,11 +77,22 @@ function bubbleSort()
         if(isSorted)
         {
             clearInterval(sorter)
-            console.log(arr)
+            let i=0;
+            let finishInterval = setInterval(() => {
+                //console.log(i)
+                document.getElementById(arr[i].toString()).style.backgroundColor = "lime"
+                i++
+                if(i>=arr.length)
+                {
+                    clearInterval(finishInterval)
+                }
+            }, 1);
         }
     },5)
     
 }
+
+
 
 visDict = {true:0,false:100}
 let vis = false
