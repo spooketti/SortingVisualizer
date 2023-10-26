@@ -78,7 +78,7 @@ function bubbleSort()
                     redBar.style.backgroundColor = "white"
                     b.style.backgroundColor = "red"
                     redBar = b
-                    playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-10000)
+                    playNote(arr[i])
                 isSorted = false;
                 let buffer = arr[i]
                 arr[i] = arr[i+1]
@@ -93,7 +93,7 @@ function bubbleSort()
             let i=0;
             let finishInterval = setInterval(() => {
                 //console.log(i)
-                playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-10000)
+                playNote(arr[i])
                 document.getElementById(arr[i].toString()).style.backgroundColor = "lime"
                 i++
                 if(i>=arr.length)
@@ -132,7 +132,7 @@ function selectionSort()
                     redBar.style.backgroundColor = "white"
                     b.style.backgroundColor = "red"
                     redBar = b
-                    playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-10000)
+                    playNote(arr[i])
                     
         let temp = arr[min_idx];
         arr[min_idx] = arr[i];
@@ -150,7 +150,7 @@ function selectionSort()
                 {
                     document.getElementById(arr[i].toString()).style.backgroundColor = "lime"
                     i++
-                    playNote(16.35*(Math.pow(2,1/12),parseInt(arr[i]))-10000)
+                    playNote(arr[i])
                     if(i>=arr.length)
                     {
                         clearInterval(finishInterval)
