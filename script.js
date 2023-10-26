@@ -29,6 +29,7 @@ function createData(siz)
         bar.className = "bar"
         // bar.style.width = `${barRatioWidth * arr[i]}%`
         bar.style.height = `${barRatioHeight * arr[i]}%`
+        
         data_graph.appendChild(bar)
     }
 
@@ -173,6 +174,48 @@ function selectionSort()
         
 },5)
 }
+
+/*
+function mergeSort(unsortedList) {
+    const list = [...unsortedList];
+    // base case
+    if (list.length <= 1) {
+        return list;
+    }
+    const middle = Math.floor(list.length / 2);
+    const leftList = list.slice(0, middle);
+    let leftListBar
+    for(let i=0;i<leftList.length;i++)
+    {
+
+    }
+    const rightList = list.slice(middle, list.length);
+    const leftSortedList = mergeSort(leftList); // left sublist
+    const rightSortedList = mergeSort(rightList); // right sublist
+    let sortedList = [];
+    data_graph.innerHTML = ""
+    // create sorted array with left and right sublist
+    while(leftSortedList.length && rightSortedList.length) {
+        if (leftSortedList[0] <= rightSortedList[0]) {
+            sortedList.push(leftSortedList.shift());
+            let a = document.createElement("div")
+            a.className = "bar"
+            a.id = 
+            data_graph.appendChild("div")
+        } else {
+            sortedList.push(rightSortedList.shift());
+        }
+    }
+    // add the remaining elements, if any
+    if (leftSortedList.length) {
+        sortedList = sortedList.concat(leftSortedList);
+    }
+    if (rightSortedList.length) {
+        sortedList = sortedList.concat(rightSortedList);
+    }
+    return sortedList;
+}
+*/
 /*
 let min_idx = i;
          for (let j = i + 1; j < arr.length; j++)
